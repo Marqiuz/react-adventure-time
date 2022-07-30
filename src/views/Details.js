@@ -12,7 +12,9 @@ function Details(props) {
             <h2 className="allHeading">{currAdv.title}</h2>
             <div className="card col-6 contDet">
                 <img className="imgDet" src={currAdv.imageUrl} alt={currAdv.title} />
-                <DetailsSingleAdv adv={currAdv}/>      
+
+                <DetailsSingleAdv adv={currAdv}/>   
+                   
                 <div className="card-footer" style={{ textAlign: 'center' }}>
                     {
                         sessionStorage.getItem('username') === currAdv.author ?
