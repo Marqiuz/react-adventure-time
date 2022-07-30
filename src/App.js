@@ -15,6 +15,7 @@ import Header from './common/Header';
 import Footer from './common/Footer';
 
 import Home from './views/Home';
+import About from './views/About';
 import Register from './views/Register';
 import Login from './views/Login';
 import CreateAdventure from './views/CreateAdventure';
