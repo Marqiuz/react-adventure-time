@@ -66,7 +66,7 @@ class CreateAdventure extends Component {
                         <label htmlFor="description">Adventure description</label>
                         <textarea id="description" name="description" value={this.state.description} onChange={this.handleChange} />
                     </div>
-                    <button type="submit">Submit</button>
+                    <button type="submit">Create</button>
                 </form>
             </div>
         );
