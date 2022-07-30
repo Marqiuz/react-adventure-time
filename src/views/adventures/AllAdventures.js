@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import SingleCategory from '../components/SingleCategory'
+import SingleAdventure from '../../components/SingleAdventure'
 
-class AllCategories extends Component {
+class AllAdventures extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -10,8 +10,8 @@ class AllCategories extends Component {
     }
 
     render() {
-        if (!this.props.categories.length && !this.state.isLoading) {
-            return <h1>There are no categories yet</h1>
+        if (!this.props.adventures.length && !this.state.isLoading) {
+            return <h1>Sorry, no adventures yet....Be the first to add one!</h1>
         }
         if (this.state.isLoading) {
             return <h1>Loading....</h1>
@@ -19,12 +19,12 @@ class AllCategories extends Component {
 
         return (
             <Fragment>
-                <h2 className="allHeading">All categories</h2>
+                <h2 className="allHeading">All adventures</h2>
                 <div className="container">
                     <div className="row">
                         <div className="card-deck space-top">
                             {
-                                this.props.categories.map(cat => <SingleCategory cat={cat} key={cat._id} />)
+                                this.props.adventures.map(adv => <SingleAdventure adv={adv} key={adv._id} />)
                             }
 
                         </div>
@@ -35,4 +35,4 @@ class AllCategories extends Component {
     }
 }
 
-export default AllCategories;
+export default AllAdventures;

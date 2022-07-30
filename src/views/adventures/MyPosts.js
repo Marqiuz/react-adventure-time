@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import SingleAdventure from '../components/SingleAdventure'
+import SingleAdventure from '../../components/SingleAdventure'
 
 class MyPosts extends Component {
     constructor(props) {
