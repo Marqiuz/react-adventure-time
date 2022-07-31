@@ -10,7 +10,6 @@ import { registerFetch, loginFetch } from './services/auth-service';
 import { getAllAdventuresFetch, createAdventureFetch, editAdventureFetch, likeAdventureFetch, deleteAdventureFetch } from './services/advs-service';
 import { createCatFetch, getAllCatsFetch } from './services/cat-service';
 
-
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 
@@ -53,19 +52,18 @@ class App extends Component {
     this.getAllAdvs = this.getAllAdvs.bind(this);
     this.getAllCats = this.getAllCats.bind(this);
     this.searchByCat = this.searchByCat.bind(this);
-
   }
 
   registerUser(userData) {
     registerFetch(userData)
       .then(body => {
-        //console.log(body)
+        // console.log(body)
         if (!body.success && body.errors) {
           toast.warn(body.message, { closeButton: false });
           for (let er in body.errors) {
             toast.error(body.errors[er], { closeButton: false });
           }
-        }  else if (body.success === false) { 
+        } else if (body.success === false) {
           toast.error(body.message, { closeButton: false });
         } else {
           this.loginUser(userData, body.message)
@@ -79,15 +77,14 @@ class App extends Component {
         //console.log(body);
         let isAdminCheck = false;
 
-        if (body.success === false && body.errors) { 
+        if (body.success === false && body.errors) {
           toast.warn(body.message, { closeButton: false });
           for (let er in body.errors) {
             toast.error(body.errors[er], { closeButton: false });
           }
-        } else if (body.success === false) { 
+        } else if (body.success === false) {
           toast.error(body.message, { closeButton: false });
         } else {
-          
           sessionStorage.setItem('username', body.user.username);
           sessionStorage.setItem('token', body.token);
 
@@ -124,60 +121,91 @@ class App extends Component {
     createAdventureFetch(advData)
       .then(body => {
         //console.log(body);
-        if (body.success === false && body.errors) {
-          toast.warn(body.message, { closeButton: false });
-          for (let er in body.errors) {
-            toast.error(body.errors[er], { closeButton: false });
+        if(body){
+          if (body.success === false && body.errors) {
+            toast.warn(body.message, { closeButton: false });
+            for (let er in body.errors) {
+              toast.error(body.errors[er], { closeButton: false });
+            }
+            this.setState({
+              hasFetched: false
+            })
+          } else if (body.success === false) {
+            toast.error(body.message, { closeButton: false });
+            this.setState({
+              hasFetched: false
+            })
+          } else {
+            this.setState({
+              hasFetched: true
+            })
+            this.getAllAdvs(body.message);
           }
+        } else{
+          toast.error('Unothorized 401!!!!', { closeButton: false });
           this.setState({
             hasFetched: false
           })
-        } else if (body.success === false) {
-          toast.error(body.message, { closeButton: false });
-          this.setState({
-            hasFetched: false
-          })
-        } else {
-          this.setState({
-            hasFetched: true
-          })
-          this.getAllAdvs(body.message);
-        }
+        }       
       })
   }
 
   editAdventure(advData, id) {
     editAdventureFetch(advData, id)
       .then(body => {
-        
-        if (body.success === false) {
-          toast.error(body.message, { closeButton: false });
+        //console.log(body);
+
+        if(body){
+          if (body.success === false && body.errors) {
+            toast.warn(body.message, { closeButton: false });
+            for (let er in body.errors) {
+              toast.error(body.errors[er], { closeButton: false });
+            }
+            this.setState({
+              hasFetched: false
+            })
+          } else if (body.success === false) {
+            toast.error(body.message, { closeButton: false });
+            this.setState({
+              hasFetched: false
+            })
+          } else {
+            this.setState({
+              hasFetched: true
+            })
+            this.getAllAdvs(body.message);
+          }
+        } else{
+          toast.error('Unothorized 401!!!!', { closeButton: false });
           this.setState({
             hasFetched: false
           })
-        } else {
-          this.setState({
-            hasFetched: true
-          })
-          this.getAllAdvs(body.message);
-        }
+        } 
       })
   }
-
+  
   likeAdventure(advData, id) {
     likeAdventureFetch(advData, id)
       .then(body => {
         //console.log(body);
-        if (body.success === false) {
-          toast.error(body.message, { closeButton: false });
+
+        if(body){
+          if (body.success === false) {
+            toast.error(body.message, { closeButton: false });
+            this.setState({
+              hasFetched: false
+            })
+          } else {
+            this.setState({
+              hasFetched: true
+            })
+            this.getAllAdvs(body.message);
+          }
+        } else{
+          toast.error('Unothorized 401!!!!', { closeButton: false });
           this.setState({
             hasFetched: false
           })
-        } else {
-          this.setState({
-            hasFetched: true
-          })
-          this.getAllAdvs(body.message);
         }
       })
   }
@@ -185,17 +213,25 @@ class App extends Component {
   deleteAdventure(id) {
     deleteAdventureFetch(id)
       .then(body => {
-        
-        if (body.success === false) {
-          toast.error(body.message, { closeButton: false });
+        //console.log(body);
+
+        if(body){
+          if (body.success === false) {
+            toast.error(body.message, { closeButton: false });
+            this.setState({
+              hasFetched: false
+            })
+          } else {
+            this.setState({
+              hasFetched: true
+            })
+            this.getAllAdvs(body.message);
+          }
+        } else{
+          toast.error('Unothorized 401!!!!', { closeButton: false });
           this.setState({
             hasFetched: false
           })
-        } else {
-          this.setState({
-            hasFetched: true
-          })
-          this.getAllAdvs(body.message);
         }
       })
   }
@@ -203,25 +239,33 @@ class App extends Component {
   createCategory(catData) {
     createCatFetch(catData)
       .then(body => {
-        
-        if (body.success === false && body.errors) {
-          toast.warn(body.message, { closeButton: false });
-          for (let er in body.errors) {
-            toast.error(body.errors[er], { closeButton: false });
+        //console.log(body);
+
+        if(body){
+          if (body.success === false && body.errors) {
+            toast.warn(body.message, { closeButton: false });
+            for (let er in body.errors) {
+              toast.error(body.errors[er], { closeButton: false });
+            }
+            this.setState({
+              hasFetched: false
+            })
+          } else if (body.success === false) {
+            toast.error(body.message, { closeButton: false });
+            this.setState({
+              hasFetched: false
+            })
+          } else {
+            this.setState({
+              hasFetched: true
+            })
+            this.getAllCats(body.message);
           }
+        } else{
+          toast.error('Unothorized 401!!!!', { closeButton: false });
           this.setState({
             hasFetched: false
           })
-        } else if (body.success === false) {
-          toast.error(body.message, { closeButton: false });
-          this.setState({
-            hasFetched: false
-          })
-        } else {
-          this.setState({
-            hasFetched: true
-          })
-          this.getAllCats(body.message);
         }
       })
   }
@@ -229,7 +273,7 @@ class App extends Component {
   getAllAdvs(mesFromPrevTask) {
     getAllAdventuresFetch()
       .then(body => {
-        
+        // console.log(body)
         if (mesFromPrevTask) {
           toast.success(mesFromPrevTask, { closeButton: false });
         }
@@ -243,7 +287,7 @@ class App extends Component {
   getAllCats(mesFromPrevTask) {
     getAllCatsFetch()
       .then(body => {
-        
+        // console.log(body)
         if (mesFromPrevTask) {
           toast.success(mesFromPrevTask, { closeButton: false });
         }
@@ -267,7 +311,7 @@ class App extends Component {
     this.getAllCats();
     let currUsername = sessionStorage.getItem('username');
     let currIsAdmin = sessionStorage.getItem('isAdmin');
-    if (currIsAdmin === 'true') { 
+    if (currIsAdmin === 'true') {
       this.setState({
         username: currUsername,
         isAdmin: true
@@ -283,7 +327,6 @@ class App extends Component {
         isAdmin: false
       })
     }
-
   }
 
 
@@ -296,6 +339,7 @@ class App extends Component {
           <Route path='/' exact render={() => (
             <Home username={this.state.username} isAdmin={this.state.isAdmin} adventures={this.state.adventures} />)}
           />
+
           <Route path='/about' component={About} />
 
           <Route path='/user' render={(props) =>
@@ -305,7 +349,6 @@ class App extends Component {
               username={this.state.username}
               {...props}
             />} />
-
 
           <Route path='/logout' render={() => <Logout logout={this.logout} />} />
 
@@ -322,16 +365,16 @@ class App extends Component {
 
           <Route path='/category' render={(props) => (
             this.state.isAdmin ?
-            (<CategoryMain
-              createCategory={this.createCategory}
-              categories={this.state.categories}
-              hasFetched={this.state.hasFetched}
-              {...props} />)
-            : (<Home
-              username={this.state.username}
-              isAdmin={this.state.isAdmin}
-              adventures={this.state.adventures}
-            />)
+              (<CategoryMain
+                createCategory={this.createCategory}
+                categories={this.state.categories}
+                hasFetched={this.state.hasFetched}
+                {...props} />)
+              : (<Home
+                username={this.state.username}
+                isAdmin={this.state.isAdmin}
+                adventures={this.state.adventures}
+              />)
           )} />
 
           <Route component={NotFound} />
