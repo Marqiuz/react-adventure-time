@@ -38,6 +38,7 @@ class App extends Component {
       isAdmin: false,
       adventures: [],
       categories: [],
+      foundAdvs: [],
       hasFetched: false
     }
 
@@ -50,6 +51,7 @@ class App extends Component {
     this.createCategory = this.createCategory.bind(this);
     this.getAllAdvs = this.getAllAdvs.bind(this);
     this.getAllCats = this.getAllCats.bind(this);
+    this.searchByCat = this.searchByCat.bind(this);
 
   }
 
@@ -233,6 +235,14 @@ class App extends Component {
       })
   }
 
+  searchByCat(catId) {
+    let advToShow = this.state.adventures.filter(adv => adv.category.toString() === catId.toString())
+    //console.log(advToShow);
+    this.setState({
+      foundAdvs: advToShow
+    })
+  }
+
   componentDidMount() {
     this.getAllAdvs();
     this.getAllCats();
@@ -285,6 +295,7 @@ class App extends Component {
               createAdventure={this.createAdventure}
               editAdventure={this.editAdventure}
               deleteAdventure={this.deleteAdventure}
+              searchByCat={this.searchByCat}
               {...this.state}
               {...props}
             />)} />
