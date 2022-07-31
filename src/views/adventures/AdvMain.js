@@ -24,7 +24,13 @@ const AdvMain = (props) => {
                 <FoundAdventures foundAdvs={props.foundAdvs} />} />
                 
             <Route path={props.match.path + '/details/:advid'} render={(routeProps) =>
-                <Details adventures={props.adventures} isAdmin={props.isAdmin} {...routeProps} />} />
+                <Details
+                adventures={props.adventures}
+                isAdmin={props.isAdmin}
+                username={props.username}
+                likeAdventure={props.likeAdventure}
+                {...routeProps}
+            />} />
 
             {
                 props.username ?
