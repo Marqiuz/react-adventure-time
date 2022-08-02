@@ -36,7 +36,7 @@ nav.navbar-menu {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    background-color: #556B2F;
+    background-color: #0d899f;
 }
 
 nav.navbar-menu a {
@@ -47,12 +47,12 @@ nav.navbar-menu a {
     width: 15%;
     align-items: center;
     padding: 20px 10px;
-    border: 1px solid #556B2F;
+    border: 1px solid #0d899f;
     border-radius: 8px;
 }
 
 nav.navbar-menu a:hover {
-    color: #556B2F;
+    color: #0d899f;
     background-color: rgb(188, 212, 151);
 }
 
@@ -63,7 +63,7 @@ nav.navbar-menu a:hover {
 #navimage:hover {
     margin: 0px;
     padding: 0px;
-    background-color: #556B2F;
+    background-color: #0d899f;
 }
 #compass{
     width: 50px;
@@ -79,7 +79,7 @@ nav.navbar-menu a:hover {
     text-align: center;
     margin: 15px;
     font-size: 40px;
-    color: #556B2F;
+    color: #0d899f;
 }
 
 .img-details{
@@ -158,20 +158,20 @@ div.welcome {
 
 div.welcome a {
     padding: 10px;
-    background-color: #556B2F;
+    background-color: #0d899f;
     border-radius: 0.5em;
     outline: none;
     text-decoration: none;
     color: white;
     margin: 10px;
-    border: 2px solid #556B2F;
+    border: 2px solid #0d899f;
 
 }
 
 div.welcome a:hover {
     background-color: white;
-    color: #556B2F;
-    border: 2px solid #556B2F;
+    color: #0d899f;
+    border: 2px solid #0d899f;
 }
 
 div.welcome p {
@@ -206,7 +206,7 @@ div.welcome p {
    padding: 10px 5px;
    outline: none;
    border-radius: 0.5em;
-   border: 1px solid #556B2F;   
+   border: 1px solid #0d899f;   
 }
 
 .form-wrapper textarea{
@@ -214,33 +214,33 @@ div.welcome p {
     padding: 10px 5px;
     outline: none;
     border-radius: 0.5em;
-    border: 1px solid #556B2F;   
+    border: 1px solid #0d899f;   
  }
 
  .form-wrapper select{
     padding: 10px 5px;
     outline: none;
     border-radius: 0.5em;
-    border: 1px solid #556B2F;   
+    border: 1px solid #0d899f;   
  }
 
 
 .form-wrapper button {
     padding: 10px 20px;
     margin: 12px;   
-    background-color: #556B2F;
+    background-color: #0d899f;
     color: white;
     border: none;
     border-radius: 5px;
     font-size: 18px;
     font-weight: bold;
-    border: 2px solid #556B2F;
+    border: 2px solid #0d899f;
 }
 
 .form-wrapper button:hover {
     background-color: white;
-    color: #556B2F;
-    border: 2px solid #556B2F;
+    color: #0d899f;
+    border: 2px solid #0d899f;
     font-size: 18px;
     font-weight: bold;
 }
@@ -250,9 +250,9 @@ footer {
     width: 100%;
     bottom: 0;
     text-align: center;
-    background-color: #556B2F;
+    background-color: #0d899f;
     color: white;
-    padding: 10px 0;
+    padding: 2px 0;
     font-size: 18px;
     font-weight: bold;
 }
