@@ -10,7 +10,7 @@ body {
     margin: 0;
     padding: 0;
     font: 16px/1.5 'Lucida Calligraphy', sans-serif;
-    background: url("./images/Egypt.jpg") no-repeat center center fixed;
+    background: url("./images/Alps.jpg") no-repeat center center fixed;
     background-size: cover;    
 }
 
@@ -79,7 +79,7 @@ nav.navbar-menu a:hover {
     text-align: center;
     margin: 15px;
     font-size: 40px;
-    color: #0d899f;
+    color: #000000;
 }
 
 .img-details{
